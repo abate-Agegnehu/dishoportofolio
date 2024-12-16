@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,12 +10,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Skill from "../pages/Skill";
-import Projects from "../pages/Projects";
-import Contact from "../pages/Contact";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+const Home = React.lazy(() => import("../pages/Home"));
+const About = React.lazy(() => import("../pages/About"));
+const Skill = React.lazy(() => import("../pages/Skill"));
+const Projects = React.lazy(() => import("../pages/Projects"));
+const Contact = React.lazy(() => import("../pages/Contact"));
 
 const NavBar = () => {
   const theme = useTheme();
@@ -28,26 +29,20 @@ const NavBar = () => {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
+  const [visibleSections, setVisibleSections] = useState({
+    Home: true,
+    About: false,
+    Skill: false,
+    Projects: false,
+    Contact: false,
+  });
+
   const sections = {
     Home: homeRef,
     About: aboutRef,
     Skill: skillRef,
     Projects: projectsRef,
     Contact: contactRef,
-  };
-
-  const scrollToSection = (section) => {
-    sections[section].current.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
   };
 
   const menuItems = [
@@ -63,6 +58,51 @@ const NavBar = () => {
       }}
     />,
   ];
+
+  const scrollToSection = (section) => {
+    sections[section].current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    const updatedVisibility = { ...visibleSections };
+
+    Object.keys(sections).forEach((section) => {
+      const sectionTop = sections[section].current.offsetTop;
+      const sectionHeight = sections[section].current.offsetHeight;
+
+      if (
+        scrollPosition + windowHeight > sectionTop + 10 &&
+        scrollPosition < sectionTop + sectionHeight - 10
+      ) {
+        updatedVisibility[section] = true;
+      } else {
+        updatedVisibility[section] = false;
+      }
+    });
+
+    setVisibleSections(updatedVisibility);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [visibleSections]);
 
   return (
     <div>
@@ -144,24 +184,52 @@ const NavBar = () => {
         </List>
       </Drawer>
 
-      <div ref={homeRef} style={{ paddingTop: theme.spacing(10) }}>
-        <Home />
+      <div ref={homeRef} style={{ paddingTop: theme.spacing(10) }} id="home">
+        {visibleSections.Home && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Home />
+          </React.Suspense>
+        )}
       </div>
-      <div ref={aboutRef} style={{ paddingTop: theme.spacing(10) }}>
-        <About />
+      <div ref={aboutRef} style={{ paddingTop: theme.spacing(10) }} id="about">
+        {visibleSections.About && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </React.Suspense>
+        )}
       </div>
-      <div ref={projectsRef} style={{ paddingTop: theme.spacing(10) }}>
-        <Projects />
+      <div
+        ref={projectsRef}
+        style={{ paddingTop: theme.spacing(10) }}
+        id="projects"
+      >
+        {visibleSections.Projects && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Projects />
+          </React.Suspense>
+        )}
       </div>
-      <div ref={skillRef} style={{ paddingTop: theme.spacing(10) }}>
-        <Skill />
+      <div ref={skillRef} style={{ paddingTop: theme.spacing(10) }} id="skill">
+        {visibleSections.Skill && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Skill />
+          </React.Suspense>
+        )}
       </div>
 
-      <div ref={contactRef} style={{ paddingTop: theme.spacing(10) }}>
-        <Contact />
+      <div
+        ref={contactRef}
+        style={{ paddingTop: theme.spacing(10) }}
+        id="contact"
+      >
+        {visibleSections.Contact && (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Contact />
+          </React.Suspense>
+        )}
       </div>
     </div>
   );
 };
 
-export default NavBar;
+export default NavBar; 

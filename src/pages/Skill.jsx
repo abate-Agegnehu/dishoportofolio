@@ -43,6 +43,7 @@ const Skill = () => {
     <Box
       sx={{
         height: "100vh",
+        paddingTop: "100px",
       }}
     >
       <Typography

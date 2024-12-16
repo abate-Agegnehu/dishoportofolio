@@ -5,7 +5,7 @@ import thumbnail from "../images/uiux.png";
 import mobileapp from "../images/mobileapp.png";
 import logo from "../images/logo.png";
 
-import { Box, Typography,keyframes } from "@mui/material";
+import { Box, Typography, keyframes } from "@mui/material";
 
 const slideInOutLeft = keyframes`
   0% {
@@ -44,13 +44,14 @@ const zoomIn = keyframes`
 `;
 const postions = [
   {
-    top: "-78px",
-    left: "100px",
-  },
-  {
-    left: "-200px",
+    left: "-100px",
     top: "115px",
   },
+  {
+    top: "-78px",
+    left: "0px",
+  },
+
   {
     top: "115px",
     left: "100px",
@@ -60,18 +61,18 @@ const postions = [
     left: "0px",
   },
 ];
-const works = [
-  {
-    name: "Mobile App Design",
-    description:
-      "Developing engaging mobile app interfaces that enhance user interaction. My designs ensure accessibility, simplicity, and an attractive aesthetic to elevate the mobile experience.",
-    image: mobileapp,
-  },
+const initialWorks = [
   {
     name: "Website Design",
     description:
       "Crafting intuitive and visually appealing websites that prioritize user experience and functionality. From responsive layouts to seamless navigation, I design websites tailored to meet client objectives and user needs.",
     image: webdesign,
+  },
+  {
+    name: "Mobile App Design ",
+    description:
+      " Developing engaging mobile app interfaces that enhance user interaction. My designs ensure accessibility, simplicity, and an attractive aesthetic to elevate the mobile experience.",
+    image: mobileapp,
   },
 
   {
@@ -89,17 +90,34 @@ const works = [
 ];
 
 const Projects = () => {
-  const [selectedWork, setSelectedWork] = useState(works[0]);
+  const [works, setWorks] = useState(initialWorks);
 
-  const handleClick = (work) => {
-    setSelectedWork(work);
+  const [selectedWork, setSelectedWork] = useState(initialWorks[0]);
+
+  const handleClick = (index) => {
+    if (index === 1) {
+      const updatedWorks = [...works];
+      updatedWorks[1] = works[2];
+      updatedWorks[2] = works[3];
+      updatedWorks[3] = works[0];
+      updatedWorks[0] = works[1];
+      setWorks(updatedWorks);
+    } else if (index === 3) {
+      const updatedWorks = [...works];
+      updatedWorks[3] = works[2];
+      updatedWorks[2] = works[1];
+      updatedWorks[1] = works[0];
+      updatedWorks[0] = works[3];
+      setWorks(updatedWorks);
+    }
+    setSelectedWork(works[index]);
   };
-
   return (
     <Box
       sx={{
         width: "100%",
         justifyContent: "center",
+        paddingTop: "100px",
       }}
     >
       <Typography
@@ -189,7 +207,7 @@ const Projects = () => {
                 cursor: "pointer",
               }}
               alt={work.name}
-              onClick={() => handleClick(work)}
+              onClick={() => handleClick(index)} // Pass index here instead of work
             />
           ))}
         </Box>

@@ -1,13 +1,27 @@
-import { Box, IconButton, Typography } from '@mui/material'
-import React from 'react'
+import { Box, IconButton, Typography } from "@mui/material";
+import React from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <Box>
-      <Box>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100%",
+        paddingTop: "100px",
+      }}
+    >
+      <Box
+        sx={{
+          fontSize: "26px",
+          color: "#333",
+          padding: "10px 40px",
+          textAlign: "left",
+        }}
+      >
         <Typography sx={{ textAlign: "start" }}>Disho Agegnehu</Typography>
         <Typography
           sx={{
@@ -29,7 +43,11 @@ const Footer = () => {
         </Box>
         <Typography>© 2024 dishoag. All rights reserved.</Typography>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          textAlign: "left",
+        }}
+      >
         <Typography>Contact Us</Typography>
         <Box>
           <Typography>Email: dishoagnehu@gmail.com</Typography>
@@ -37,7 +55,11 @@ const Footer = () => {
           <Typography>Address: Addis Ababa, Ethiopia</Typography>
         </Box>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          textAlign: "left",
+        }}
+      >
         <Typography>Quick Links:</Typography>
         <Box>
           <Typography>Home</Typography>
@@ -47,7 +69,14 @@ const Footer = () => {
           <Typography>Contact</Typography>
         </Box>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          fontSize: "26px",
+          color: "#333",
+          padding: "10px 40px",
+          textAlign: "left",
+        }}
+      >
         <Typography>Follow Us:</Typography>
         <Box>
           <Typography>Facebook</Typography>
@@ -58,6 +87,6 @@ const Footer = () => {
       </Box>
     </Box>
   );
-}
+};
 
-export default Footer
+export default Footer;

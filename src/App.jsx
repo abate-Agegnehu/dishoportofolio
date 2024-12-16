@@ -1,13 +1,19 @@
+import { Box } from "@mui/material";
 import "./App.css";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
+    <Box
+      sx={{
+        width: "100%",
+      }}
+      className="App"
+    >
       <NavBar />
       <Footer />
-    </div>
+    </Box>
   );
 }
 

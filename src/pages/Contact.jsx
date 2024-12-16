@@ -4,7 +4,8 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  Typography,keyframes
+  Typography,
+  keyframes,
 } from "@mui/material";
 import React from "react";
 import LockIcon from "@mui/icons-material/Lock";
@@ -44,6 +45,7 @@ const Contact = () => {
           fontSize: "56px",
           width: "100%",
           padding: "10px 40px",
+          paddingTop: "100px",
         }}
       >
         Contact
@@ -57,7 +59,7 @@ const Contact = () => {
       >
         <Box
           sx={{
-            width: "48%",
+            width: "40%",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
@@ -95,7 +97,7 @@ const Contact = () => {
           <TextField
             id="outlined-textarea"
             label="Messages"
-            rows= "4"
+            rows="4"
             placeholder="Type Here Your Messages"
             multiline
           />
@@ -129,9 +131,10 @@ const Contact = () => {
 
         <Box
           sx={{
-            width: "48%",
+            width: "40%",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             gap: "20px",
             animation: `${slideInOutRight} 1s ease-out`,
           }}
