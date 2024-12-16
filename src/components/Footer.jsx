@@ -1,54 +1,63 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
-import { Container, Typography, Link } from "@mui/material";
-
-const FooterContainer = styled("div")(({ theme }) => ({
-  background:
-    "linear-gradient(to right, transparent 0%, rgba(10, 200, 150, 0.6) 100%)",
-  padding: theme.spacing(2),
-  textAlign: "center",
-}));
-
-const Links = styled(Typography)(({ theme }) => ({
-  margin: theme.spacing(1),
-}));
-
-const Copyright = styled(Typography)(({ theme }) => ({
-  marginTop: theme.spacing(1),
-  color: "#6c757d",
-}));
+import { Box, IconButton, Typography } from '@mui/material'
+import React from 'react'
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <Container>
-        <Links variant="h6">
-          Follow me on:
-          <Link
-            href="https://www.linkedin.com/in/abate-agegnehu-a78a84294/"
-            target="_blank"
-            rel="noopener"
-            sx={{ margin: 1 }}
-          >
-            LinkedIn
-          </Link>{" "}
-          |
-          <Link
-            href="https://github.com/abate-Agegnehu"
-            target="_blank"
-            rel="noopener"
-            sx={{ margin: 1 }}
-          >
-            GitHub
-          </Link>
-        </Links>
-        <Copyright variant="body2">
-          &copy; {new Date().getFullYear()} Abate Agegnehu. Innovating solutions
-          through exceptional development.
-        </Copyright>
-      </Container>
-    </FooterContainer>
+    <Box>
+      <Box>
+        <Typography sx={{ textAlign: "start" }}>Disho Agegnehu</Typography>
+        <Typography
+          sx={{
+            textAlign: "start",
+          }}
+        >
+          Elevating brands through exceptional design.
+        </Typography>
+        <Box>
+          <IconButton sx={{ color: "#FF9200" }}>
+            <FaTelegram />
+          </IconButton>
+          <IconButton>
+            <MailOutlineIcon sx={{ color: "#FF9200" }} />
+          </IconButton>
+          <IconButton>
+            <LinkedInIcon sx={{ color: "#FF9200" }} />
+          </IconButton>
+        </Box>
+        <Typography>© 2024 dishoag. All rights reserved.</Typography>
+      </Box>
+      <Box>
+        <Typography>Contact Us</Typography>
+        <Box>
+          <Typography>Email: dishoagnehu@gmail.com</Typography>
+          <Typography>Phone: +2519209937</Typography>
+          <Typography>Address: Addis Ababa, Ethiopia</Typography>
+        </Box>
+      </Box>
+      <Box>
+        <Typography>Quick Links:</Typography>
+        <Box>
+          <Typography>Home</Typography>
+          <Typography>About</Typography>
+          <Typography>Works</Typography>
+          <Typography>Skill</Typography>
+          <Typography>Contact</Typography>
+        </Box>
+      </Box>
+      <Box>
+        <Typography>Follow Us:</Typography>
+        <Box>
+          <Typography>Facebook</Typography>
+          <Typography>Linkedin</Typography>
+          <Typography>Instagram</Typography>
+          <Typography>Twitter(x)</Typography>
+        </Box>
+      </Box>
+    </Box>
   );
-};
+}
 
-export default Footer;
+export default Footer
