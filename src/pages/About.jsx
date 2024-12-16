@@ -1,100 +1,94 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
+import React, { useEffect, useState } from "react";
 import disho1 from "../images/disho1.png";
+import { Box, Typography, keyframes } from "@mui/material";
 
-const Root = styled("div")(({ theme }) => ({
-  flexGrow: 1,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  background:
-    "linear-gradient(to left, transparent 60%, rgba(10, 200, 150, 0.6) 100%)",
-  height: "100vh",
-  position: "relative",
-  zIndex: 1,
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    height: "auto",
-  },
-}));
+const slideInOutLeft = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+`;
 
-const Left = styled("div")(({ theme }) => ({
-  flex: 1,
-  margin: "5% 3%",
-  maxWidth: "50%",
-  padding: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    maxWidth: "80%",
-    margin: "10% 0",
-  },
-}));
-
-const Right = styled("div")(({ theme }) => ({
-  flex: 1,
-  margin: "5% 3%",
-  maxWidth: "50%",
-  padding: theme.spacing(2),
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
-    maxWidth: "80%",
-    margin: "10% 0",
-  },
-}));
-
-const Image = styled("img")({
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  borderRadius: "10px",
-});
-
-const Title = styled("h1")({
-  color: "#007F87",
-  fontSize: "3rem",
-  fontWeight: "bold",
-  margin: "10px 0",
-  textAlign: "center",
-});
-
-const Paragraph = styled("p")({
-  fontSize: "1.25rem",
-  fontWeight: "300",
-  lineHeight: "1.6",
-  textAlign: "justify",
-});
-
-const Divider = styled("hr")({
-  height: "1px",
-  background: "#000000",
-  width: "40%",
-  margin: "10px auto",
-});
+const slideInOutRight = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(8%);
+  }
+`;
 
 const About = () => {
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    setStartAnimation(true);
+  }, []);
+
   return (
-    <Root>
-      <Left>
-        <Title>About Me</Title>
-        <Divider />
-        <Paragraph>
-          Hello! I’m Abate Agegnehu, a dedicated Software Engineer specializing
-          in full-stack development. I have a strong foundation in JavaScript,
-          React, Node.js, Java, Spring Boot, MongoDB, and MySQL, with skills
-          spanning both frontend and backend. I’m passionate about building
-          seamless, user-friendly applications that showcase technical
-          excellence. I thrive in collaborative environments, where I learn from
-          others and contribute my knowledge. My goal is to create impactful
-          solutions that address real-world challenges. Driven to keep growing,
-          I’m excited to build innovative software that makes a positive
-          difference.
-        </Paragraph>
-      </Left>
-      <Right>
-        <Image src={disho1} alt="Disho Agegnehu" />
-      </Right>
-    </Root>
+    <Box
+      sx={{
+        display: "flex",
+        width: "100%",
+        height: "100vh",
+        justifyContent: "space-between",
+        marginTop: "100px",
+      }}
+    >
+      <Box
+        sx={{
+          width: { sx: "100%", md: "50%" },
+          animation: startAnimation ? `${slideInOutLeft} 1s ease-out` : "none",
+        }}
+      >
+        <Typography
+          sx={{
+            color: "#FF9200",
+            fontWeight: 600,
+            fontSize: "56px",
+            width: "100%",
+            padding: "10px 40px",
+          }}
+        >
+          About Me
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "26px",
+            color: "#333",
+            padding: "10px 40px",
+            textAlign: "left",
+          }}
+        >
+          Hello! I’m Disho Agegnehu, a passionate designer with expertise in
+          creating visually appealing and user-centric designs for both web and
+          mobile platforms. I specialize in crafting engaging video content,
+          from editing to thumbnail design, ensuring every project is both
+          functional and aesthetically pleasing. With a keen eye for detail and
+          a focus on delivering exceptional results, I strive to make every
+          design and video content creation impactful and aligned with the
+          client’s vision. I am driven by creativity and am always excited to
+          take on new challenges that allow me to showcase my skills and make a
+          positive difference through design.
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          width: { sx: "100%", md: "50%" },
+          animation: startAnimation ? `${slideInOutRight} 1s ease-out` : "none",
+        }}
+      >
+        <img src={disho1} alt="Disho Agegnehu" />
+      </Box>
+    </Box>
   );
 };
 

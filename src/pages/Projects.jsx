@@ -1,172 +1,200 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
-import disho1 from "../images/disho1.png";
+import React, { useState } from "react";
 
+import webdesign from "../images/webdesign.png";
+import thumbnail from "../images/uiux.png";
+import mobileapp from "../images/mobileapp.png";
+import logo from "../images/logo.png";
 
+import { Box, Typography,keyframes } from "@mui/material";
 
-const Root = styled("div")(({ theme }) => ({
-  flexGrow: 1,
-  padding: theme.spacing(3),
-  background:
-    "linear-gradient(to top, transparent 60%, rgba(10, 200, 150, 0.6) 100%)",
-}));
-
-const ProjectContainer = styled("div")({
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-});
-
-const Project = styled("div")(({ theme }) => ({
-  position: "relative",
-  width: "100%",
-  maxWidth: "300px",
-  margin: theme.spacing(2),
-  borderRadius: "10px",
-  boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-  textAlign: "center",
-  background: "#f9f9f9",
-  overflow: "hidden",
-  "&:hover .description": {
-    transform: "translateY(0)",
+const slideInOutLeft = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+`;
+const slideInOutRight = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(8%);
+  }
+`;
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+const postions = [
+  {
+    top: "-78px",
+    left: "100px",
   },
-  "&:hover .projectName": {
-    opacity: 0,
+  {
+    left: "-200px",
+    top: "115px",
   },
-  [theme.breakpoints.up("md")]: {
-    width: "30%",
+  {
+    top: "115px",
+    left: "100px",
   },
-}));
-
-const Image = styled("img")({
-  width: "100%",
-  height: "67%",
-  objectFit: "cover",
-  borderRadius: "10px 10px 0 0",
-});
-
-const Hr = styled("hr")({
-  height: "1px",
-  background: "#000000",
-  width: "16%",
-  margin: "0 auto",
-});
-
-const Title = styled("h1")(({ theme }) => ({
-  color: "#007F87",
-  fontSize: "3rem",
-  fontWeight: "bold",
-  margin: theme.spacing(2, 0),
-  textAlign: "center",
-}));
-
-const Description = styled("div")(({ theme }) => ({
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  right: 0,
-  background:
-    "linear-gradient(to top, transparent 60%, rgba(10, 200, 150, 0.6) 100%)",
-  color: "black",
-  padding: theme.spacing(1),
-  textAlign: "center",
-  transform: "translateY(100%)",
-  transition: "transform 0.3s ease",
-  height: "25%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "0.9rem",
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
+  {
+    top: "230px",
+    left: "0px",
   },
-}));
+];
+const works = [
+  {
+    name: "Mobile App Design",
+    description:
+      "Developing engaging mobile app interfaces that enhance user interaction. My designs ensure accessibility, simplicity, and an attractive aesthetic to elevate the mobile experience.",
+    image: mobileapp,
+  },
+  {
+    name: "Website Design",
+    description:
+      "Crafting intuitive and visually appealing websites that prioritize user experience and functionality. From responsive layouts to seamless navigation, I design websites tailored to meet client objectives and user needs.",
+    image: webdesign,
+  },
 
-const ProjectName = styled("p")({
-  transition: "opacity 0.3s ease",
-});
+  {
+    name: "Logo Design",
+    description:
+      "Creating impactful and memorable logos that encapsulate brand identity. Each design is tailored to resonate with the target audience and leave a lasting impression.",
+    image: logo,
+  },
+  {
+    name: "Thumbnail Design",
+    description:
+      "Designing eye-catching thumbnails that drive engagement and clicks. By focusing on bold visuals and compelling typography, I help content creators maximize their reach.",
+    image: thumbnail,
+  },
+];
 
 const Projects = () => {
-  const projects = [
-    {
-      name: "Movie Mania",
-      image: disho1,
-      link: "https://moviemonia.netlify.app",
-      description:
-        "An interactive application for browsing the top trending movies with various filtering options.",
-    },
-    {
-      name: "Music Haven",
-      image: disho1,
-      link: "https://abatemusiccollections.netlify.app/",
-      description:
-        "A dynamic platform to explore, collect, and listen to your favorite music tracks, with powerful search and playlist creation features.",
-    },
+  const [selectedWork, setSelectedWork] = useState(works[0]);
 
-    {
-      name: "Apple Website",
-      image: disho1,
-      link: "https://resonant-semolina-5bb316.netlify.app",
-      description:
-        "A responsive replica of Apple's official website, featuring smooth animations and a polished interface.",
-    },
-    {
-      name: "T-movies",
-      image: disho1,
-      link: "https://github.com/abate-Agegnehu/T-movies",
-      description:
-        "A movie database application that showcases a wide range of popular movies channels and program, with detailed information for each.",
-    },
-    {
-      name: "Dashboard",
-      image: disho1,
-      link: "https://github.com/abate-Agegnehu/Dashboard-By-React",
-      description:
-        "A highly customizable React-based dashboard with features tailored for data visualization and management.",
-    },
-    {
-      name: "Ecommerce",
-      image: disho1,
-      link: "https://github.com/abate-Agegnehu/E-commerce-by-react",
-      description:
-        "A versatile e-commerce platform offering a cart functionality and user-friendly product browsing.",
-    },
-    {
-      name: "Pokmen",
-      image: disho1,
-      link: "https://github.com/abate-Agegnehu/Pokemon",
-      description:
-        "A fun Pokémon-themed application displaying character information and stats for each Pokémon.",
-    },
-    {
-      name: "Todo-List",
-      image: disho1,
-      link: "https://github.com/abate-Agegnehu/TodoList",
-      description:
-        "An efficient to-do list application that helps users manage and prioritize their daily tasks effectively.",
-    },
-  ];
+  const handleClick = (work) => {
+    setSelectedWork(work);
+  };
 
   return (
-    <Root>
-      <div>
-        <Title>Projects</Title>
-        <Hr />
-      </div>
-      <ProjectContainer>
-        {projects.map((project, index) => (
-          <Project key={index}>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <Image src={project.image} alt={project.name} />
-            </a>
-            <ProjectName className="projectName">{project.name}</ProjectName>
-            <Description className="description">
-              {project.description}
-            </Description>
-          </Project>
-        ))}
-      </ProjectContainer>
-    </Root>
+    <Box
+      sx={{
+        width: "100%",
+        justifyContent: "center",
+      }}
+    >
+      <Typography
+        sx={{
+          color: "#FF9200",
+          fontWeight: 600,
+          fontSize: "56px",
+          width: "100%",
+          padding: "15px 40px",
+        }}
+      >
+        Projects
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "space-between",
+          gap: "15px",
+        }}
+      >
+        <Box
+          sx={{
+            width: {
+              sx: "100%",
+              md: "30%",
+              animation: `${slideInOutLeft} 1s ease-out`,
+            },
+          }}
+        >
+          <img
+            src={selectedWork.image}
+            style={{ width: "100%", height: "350px", padding: "10px 40px" }}
+            alt=""
+          />
+        </Box>
+        <Box
+          sx={{
+            width: {
+              sx: "100%",
+              md: "35%",
+              animation: `${zoomIn} 1s ease-out`,
+            },
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "26px",
+              color: "#333",
+              padding: "10px 40px",
+            }}
+          >
+            {selectedWork.name}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "26px",
+              color: "#333",
+              padding: "10px 40px",
+              textAlign: "left",
+            }}
+          >
+            {selectedWork.description}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            width: { sx: "100%", md: "30%" },
+            border: "30px solid #FF9200",
+            borderRadius: "50%",
+            marginRight: "-15%",
+            height: "400px",
+            animation: `${slideInOutRight} 1s ease-out`,
+          }}
+        >
+          {works.map((work, index) => (
+            <img
+              key={index}
+              src={work.image}
+              style={{
+                position: "relative",
+                width: "100px",
+                height: "100px",
+                padding: "10px",
+                top: `${postions[index].top}`,
+                left: `${postions[index].left}`,
+                cursor: "pointer",
+              }}
+              alt={work.name}
+              onClick={() => handleClick(work)}
+            />
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

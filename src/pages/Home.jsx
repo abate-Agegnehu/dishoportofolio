@@ -1,111 +1,161 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
 import disho1 from "../images/disho1.png";
-import { Typography } from "@mui/material";
+import { Box, Typography, keyframes } from "@mui/material";
 
-
-const Root = styled("div")(({ theme }) => ({
-  flexGrow: 1,
-  display: "flex",
-  margin: "-1.1% 0%",
-  background: `linear-gradient(to right, transparent 60%, rgba(10, 200, 150, 0.6) 100%), url(${disho1})`,
-  backgroundSize: "cover", 
-  position: "relative",
-  zIndex: 1,
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    height: "auto",
-  },
-}));
-
-const Left = styled("div")(({ theme }) => ({
-  flex: 1,
-  margin: "5% 3% 0% 3%",
-  maxWidth: "50%",
-  padding: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    maxWidth: "80%",
-    margin: "10% 0",
-  },
-}));
-
-
-const Right = styled("div")(({ theme }) => ({
-  flex: 1,
-  margin: "5% 3%",
-  maxWidth: "50%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  padding: theme.spacing(2),
-  [theme.breakpoints.down("sm")]: {
-    maxWidth: "80%",
-    margin: "10% 0",
-  },
-}));
-
-const Image = styled("img")({
-  width: "100%",
-  height: "100%",
-  borderRadius: "10px",
-});
-
-const H2 = styled("h2")({
-  color: "#01A0AA",
-  fontSize: "2.5rem",
-  fontWeight: "900",
-  margin: "2px 0",
-  textAlign: "left",
-});
-
-const H1 = styled("h1")({
-  color: "#007F87",
-  fontSize: "3rem",
-  fontWeight: "900",
-  margin: "2px 0",
-  textAlign: "left",
-});
-
-const H4 = styled("h4")({
-  color: "#000000",
-  fontSize: "1.5rem",
-  margin: "2px 0",
-  fontWeight: "bold",
-  textAlign: "left",
-});
-
-const Paragraph = styled("p")({
-  fontSize: "1.25rem",
-  fontWeight: "300",
-  lineHeight: "1.6",
-  textAlign: "left",
-});
+const slideInOutLeft = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+`;
+const slideInOutRight = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(8%);
+  }
+`;
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 
 const Home = () => {
   return (
-    <Root >
-      <Left>
-       <Typography>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui vitae saepe repellendus dicta praesentium architecto, pariatur quas atque, molestiae natus sunt hic, facilis sequi nihil? Tempora ab ratione culpa esse?
-       </Typography>
-      </Left>
-     
-      <Right>
-        <H2>
-          A voice that bridges worlds, reminding us that every connection starts
-          with a simple greeting
-        </H2>
-
-        <Paragraph>
-          "A software engineer builds not just code, but bridges between
-          imagination and innovation, crafting dynamic solutions that shape the
-          digital future." This captures the essence of being a skilled
-          Full-Stack Developer, emphasizing your role in creating impactful web
-          applications. If you’d like further refinement or customization, let
-          me know!
-        </Paragraph>
-      </Right>
-    </Root>
+    <Box
+      sx={{
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100%",
+        flexDirection: { xs: "column", md: "row" },
+      }}
+    >
+      <Box
+        p={2}
+        sx={{
+          width: { xs: "100%", md: "35%" },
+          display: "block",
+          gap: "10px",
+          textAlign: "center",
+          animation: `${slideInOutLeft} 1s ease-out`,
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Italianno",
+            fontWeight: 400,
+            color: "#000000",
+            fontSize: { xs: "36px", md: "76px" },
+          }}
+        >
+          Hi
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "Poltawski Nowy",
+            fontWeight: 700,
+            color: "#000000",
+            fontSize: { xs: "36px", md: "76px" },
+          }}
+        >
+          I am
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "Poltawski Nowy",
+            fontWeight: 700,
+            color: "#EB8900",
+            fontSize: { xs: "28px", md: "56px" },
+          }}
+        >
+          Disho Agegnehu
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "Inter",
+            fontWeight: 400,
+            color: "#1A1A1A",
+            fontSize: { xs: "16px", md: "26px" },
+          }}
+        >
+          Pursuing a degree in Information Technology at Wolkite University.
+        </Typography>
+        <Typography
+          sx={{
+            width: { xs: "80%", md: "314.33px" },
+            borderRadius: "12.15px",
+            color: "#000000",
+            backgroundColor: "#FF9200",
+            fontSize: { xs: "18px", md: "36px" },
+            margin: { xs: "10px auto", md: "0 0 0 56px" },
+            padding: "8px 16px",
+            textAlign: "center",
+          }}
+        >
+          View My Work
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          top: "20px",
+          left: "35%",
+          display: { xs: "none", md: "block" },
+          position: "absolute",
+          zIndex: -1,
+          animation: `${zoomIn} 1s ease-out`,
+        }}
+      >
+        <img
+          src={disho1}
+          alt="Disho Agegnehu"
+          style={{
+            width: "100%",
+            zIndex: "-1",
+          }}
+        />
+      </Box>
+      <Box
+        p={2}
+        sx={{
+          width: { xs: "100%", md: "35%" },
+          display: "block",
+          textAlign: "center",
+          fontWeight: 600,
+          color: "#333",
+          mt: { xs: 2, md: 0 },
+          animation: `${slideInOutRight} 1s ease-out`,
+        }}
+      >
+        <Typography sx={{ fontSize: { xs: "28px", md: "56.23px" } }}>
+          I am
+        </Typography>
+        <Typography sx={{ fontSize: { xs: "28px", md: "56.23px" } }}>
+          a UI/UX Designer
+        </Typography>
+        <Typography sx={{ fontSize: { xs: "28px", md: "56.23px" } }}>
+          and Video Editor
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

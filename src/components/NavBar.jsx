@@ -53,8 +53,9 @@ const NavBar = () => {
   const menuItems = [
     "Home",
     "About",
-    "Works",
+    "Projects",
     "Skill",
+    "Contact",
     <LinkedInIcon
       sx={{
         backgroundColor: "#fff",
@@ -70,7 +71,7 @@ const NavBar = () => {
         sx={{
           background: "#FFE4C0",
           zIndex: theme.zIndex.drawer + 1,
-          boxShadow:"none"
+          boxShadow: "none",
         }}
       >
         <Toolbar>
@@ -149,12 +150,13 @@ const NavBar = () => {
       <div ref={aboutRef} style={{ paddingTop: theme.spacing(10) }}>
         <About />
       </div>
-      <div ref={skillRef} style={{ paddingTop: theme.spacing(10) }}>
-        <Skill />
-      </div>
       <div ref={projectsRef} style={{ paddingTop: theme.spacing(10) }}>
         <Projects />
       </div>
+      <div ref={skillRef} style={{ paddingTop: theme.spacing(10) }}>
+        <Skill />
+      </div>
+
       <div ref={contactRef} style={{ paddingTop: theme.spacing(10) }}>
         <Contact />
       </div>

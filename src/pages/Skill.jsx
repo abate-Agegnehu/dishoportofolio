@@ -1,87 +1,386 @@
+
+
+import { Box, Button, Typography,keyframes } from "@mui/material";
 import React from "react";
-import { styled } from "@mui/material/styles";
-import disho1 from "../images/disho1.png";
-
-
-const Root = styled("div")(({ theme }) => ({
-  flexGrow: 1,
-  background:
-    "linear-gradient(to top, transparent 60%, rgba(10, 200, 150, 0.6) 100%)",
-  padding: theme.spacing(2),
-}));
-
-const SkillContainer = styled("div")({
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  margin: "30px 0",
-});
-
-const SkillBox = styled("div")({
-  margin: "10px",
-  padding: "20px",
-  borderRadius: "10px",
-  boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
-  textAlign: "center",
-  background: "#f9f9f9",
-  flex: "1 1 150px",
-  minWidth: "120px",
-});
-
-const Image = styled("img")({
-  width: "80px",
-  height: "80px",
-});
-
-const Hr = styled("hr")({
-  height: "1px",
-  background: "#000000",
-  width: "10%",
-  margin: "0 auto",
-});
-
-const H1 = styled("h1")({
-  color: "#007F87",
-  fontSize: "3rem",
-  fontWeight: "bold",
-  margin: "40px 0 20px",
-  textAlign: "center",
-});
-
-const Percentage = styled("p")({
-  fontSize: "1rem",
-  fontWeight: "500",
-  color: "#007F87",
-});
-
+import webdesign from "../images/webdesign.png";
+const slideInOutLeft = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+`;
+const slideInOutRight = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(8%);
+  }
+`;
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
 const Skill = () => {
-  const skills = [
-    { name: "JavaScript", image: disho1, percentage: "85%" },
-    { name: "React", image: disho1, percentage: "80%" },
-    { name: "Node.js", image: disho1, percentage: "75%" },
-    { name: "MongoDB", image: disho1, percentage: "70%" },
-    { name: "Java", image: disho1, percentage: "70%" },
-    { name: "Spring Boot", image: disho1, percentage: "60%" },
-    { name: "MySQL", image: disho1, percentage: "80%" },
-    { name: "Python", image: disho1, percentage: "50%" },
-  ];
-
   return (
-    <Root>
-      <div>
-        <H1>Skills</H1>
-        <Hr />
-      </div>
-      <SkillContainer>
-        {skills.map((skill, index) => (
-          <SkillBox key={index}>
-            <Image src={skill.image} alt={skill.name} />
-            <p>{skill.name}</p>
-            <Percentage>{skill.percentage}</Percentage>
-          </SkillBox>
-        ))}
-      </SkillContainer>
-    </Root>
+    <Box
+      sx={{
+        height: "100vh",
+      }}
+    >
+      <Typography
+        sx={{
+          color: "#FF9200",
+          fontWeight: 600,
+          fontSize: "56px",
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
+        Skill
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            padding: "10px 40px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            animation: `${slideInOutLeft} 1s ease-out`,
+          }}
+        >
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#F8B862",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#FF9200",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              1
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Web Design
+            </Typography>
+          </Button>
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#FF9200",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#F8B862",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              2
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Mobile App Design
+            </Typography>
+          </Button>
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#FF9200",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#F8B862",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              3
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Logo Design
+            </Typography>
+          </Button>
+          <Typography
+            sx={{
+              textAlign: "start",
+            }}
+          >
+            I craft responsive, user-centric websites that seamlessly blend
+            functionality with aesthetic excellence. My designs prioritize
+            engagement and deliver intuitive, visually appealing experiences
+            tailored to meet user needs.
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            padding: "10px 40px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            animation: `${zoomIn} 1s ease-out`,
+          }}
+        >
+          <Typography
+            sx={{
+              textAlign: "start",
+            }}
+          >
+            I specialize in transforming raw footage into engaging, high-quality
+            video content. Using expert editing, sound refinement, and creative
+            transitions, I produce videos that captivate and resonate with
+            audiences.
+          </Typography>
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#F8B862",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#FF9200",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              4
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Web Design
+            </Typography>
+          </Button>
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#FF9200",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#F8B862",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              5
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Mobile App Design
+            </Typography>
+          </Button>
+          <Button
+            sx={{
+              width: "240px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
+              padding: "0px 20px 0px 0px",
+              backgroundColor: "#FF9200",
+              borderRadius: "30px",
+              textTransform: "none",
+              transition: "0.3s ease-in-out",
+              "&:hover": {
+                backgroundColor: "#ff6d00",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#F8B862",
+                color: "#000",
+                fontWeight: "bold",
+                border: "1px solid white",
+                borderRadius: "50%",
+              }}
+            >
+              6
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                color: "#333",
+                fontWeight: "bold",
+              }}
+            >
+              Logo Design
+            </Typography>
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            padding: "10px 40px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            animation: `${slideInOutRight} 1s ease-out`,
+          }}
+        >
+          <img
+            src={webdesign}
+            alt="Image description"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
