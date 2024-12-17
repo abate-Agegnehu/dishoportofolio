@@ -25,27 +25,41 @@ const Footer = () => {
           </Typography>
           <Typography>Elevating brands through exceptional design.</Typography>
           <Box sx={{ marginTop: "10px" }}>
-            <IconButton sx={{ color: "#FF9200" }}>
+            <IconButton
+              onClick={() => window.open("https://t.me/@disho21", "_blank")}
+              sx={{ color: "#FF9200" }}
+            >
               <TelegramIcon
-                onClick={() => window.open("https://t.me/disho21", "_blank")}
                 sx={{
-                  cursor: "pointer", // Ensures the icon appears clickable
-                  color: "#0088cc", // Telegram's official color
+                  cursor: "pointer",
+                  color: "#FF8200",
                 }}
               />
             </IconButton>
-            <IconButton sx={{ color: "#FF9200" }}>
+            <IconButton
+              onClick={() =>
+                (window.location.href = "mailto:dishoagnehu@gmail.com")
+              }
+              sx={{ color: "#FF9200" }}
+            >
               <MailOutlineIcon />
             </IconButton>
             <IconButton sx={{ color: "#FF9200" }}>
-              <LinkedInIcon
-                onClick={() =>
-                  window.open(
-                    "https://www.linkedin.com/in/disho-agegnehu/",
-                    "_blank"
-                  )
-                }
-              />
+              <a
+                style={{ marginTop: "6px" }}
+                href="https://www.linkedin.com/in/disho-agegnehu/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon
+                  sx={{
+                    backgroundColor: "#fff",
+                    color: "#FF9200",
+                    cursor: "pointer",
+                  }}
+                />
+              </a>
+              ,
             </IconButton>
           </Box>
           <Typography sx={{ marginTop: "10px", fontSize: "14px" }}>

@@ -124,10 +124,25 @@ const Contact = () => {
         >
           <Box display="flex" flexDirection="column" gap="20px">
             {/* Email Field */}
+
             <TextField
               label="Email"
               name="email"
               variant="standard"
+              sx={{
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "#FF9200", // Default underline color
+                },
+                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                  borderBottomColor: "#FF9200", // Hover color
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "#FF9200", // Focus color
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#FF9200", // Label color when focused
+                },
+              }}
               value={formData.email}
               onChange={handleChange}
               InputProps={{
@@ -141,6 +156,20 @@ const Contact = () => {
 
             {/* Password Field */}
             <TextField
+              sx={{
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "#FF9200", // Default underline color
+                },
+                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                  borderBottomColor: "#FF9200", // Hover color
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "#FF9200", // Focus color
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#FF9200", // Label color when focused
+                },
+              }}
               label="Password"
               name="password"
               type={showPassword ? "text" : "password"}
@@ -176,9 +205,20 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Type Your Message Here"
+              variant="standard" // Ensure variant is set to 'standard'
               sx={{
-                backgroundColor: "#F8F8F8",
-                borderRadius: "10px",
+                "& .MuiInput-underline:before": {
+                  borderBottomColor: "#FF9200", // Default underline color
+                },
+                "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+                  borderBottomColor: "#FF9200", // Hover underline color
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "#FF9200", // Focus underline color
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#FF9200", // Label color when focused
+                },
               }}
             />
 
@@ -234,22 +274,41 @@ const Contact = () => {
 
             {/* Social Media Icons */}
             <Box>
-              <IconButton>
-                <TelegramIcon style={{ color: "#FF9200", fontSize: "28px" }} />
-              </IconButton>
-              <IconButton>
-                <MailOutlineIcon sx={{ color: "#FF9200", fontSize: "28px" }} />
-              </IconButton>
-              <IconButton>
-                <LinkedInIcon
-                  onClick={() =>
-                    window.open(
-                      "https://www.linkedin.com/in/disho-agegnehu/",
-                      "_blank"
-                    )
-                  }
-                  sx={{ color: "#FF9200", fontSize: "28px" }}
+              <IconButton
+                onClick={() => window.open("https://t.me/@disho21", "_blank")}
+                sx={{ color: "#FF9200" }}
+              >
+                <TelegramIcon
+                  sx={{
+                    cursor: "pointer",
+                    color: "#FF8200",
+                  }}
                 />
+              </IconButton>
+              <IconButton
+                onClick={() =>
+                  (window.location.href = "mailto:dishoagnehu@gmail.com")
+                }
+                sx={{ color: "#FF9200" }}
+              >
+                <MailOutlineIcon />
+              </IconButton>
+              <IconButton>
+                <a
+                  style={{ marginTop: "6px" }}
+                  href="https://www.linkedin.com/in/disho-agegnehu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedInIcon
+                    sx={{
+                      backgroundColor: "#fff",
+                      color: "#FF9200",
+                      cursor: "pointer",
+                    }}
+                  />
+                </a>
+                ,
               </IconButton>
             </Box>
           </Box>

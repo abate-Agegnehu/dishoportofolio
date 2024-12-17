@@ -51,16 +51,19 @@ const NavBar = () => {
     "Projects",
     "Skill",
     "Contact",
-    <LinkedInIcon
-      onClick={() =>
-        window.open("https://www.linkedin.com/in/disho-agegnehu/", "_blank")
-      }
-      sx={{
-        backgroundColor: "#fff",
-        color: "#FF9200",
-        cursor: "pointer", 
-      }}
-    />,
+    <a
+      href="https://www.linkedin.com/in/disho-agegnehu/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <LinkedInIcon
+        sx={{
+          backgroundColor: "#fff",
+          color: "#FF9200",
+          cursor: "pointer",
+        }}
+      />
+    </a>,
   ];
 
   const scrollToSection = (section) => {
