@@ -60,7 +60,7 @@ const NavBar = () => {
   ];
 
   const scrollToSection = (section) => {
-    sections[section].current.scrollIntoView({ behavior: "smooth" });
+    sections[section]?.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const toggleDrawer = (open) => (event) => {
@@ -134,9 +134,9 @@ const NavBar = () => {
               color: "black",
             }}
           >
-            {menuItems.map((item) => (
+            {menuItems.map((item, index) => (
               <Typography
-                key={item}
+                key={index}
                 variant="h6"
                 onClick={() => scrollToSection(item)}
                 sx={{
@@ -168,10 +168,10 @@ const NavBar = () => {
         }}
       >
         <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-          {menuItems.map((text) => (
+          {menuItems.map((text, index) => (
             <ListItem
               button
-              key={text}
+              key={index}
               onClick={() => scrollToSection(text)}
               sx={{ textAlign: "center" }}
             >
@@ -232,4 +232,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; 
+export default NavBar;
