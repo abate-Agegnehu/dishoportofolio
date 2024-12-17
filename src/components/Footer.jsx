@@ -3,6 +3,7 @@ import { Grid, Typography, IconButton, Box } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { Link } from "react-scroll";
 
 
 const Footer = () => {
@@ -23,7 +24,9 @@ const Footer = () => {
           <Typography variant="h6" fontWeight="bold" sx={{ color: "#003308" }}>
             Disho Agegnehu
           </Typography>
-          <Typography>Elevating brands through exceptional design.</Typography>
+          <Typography sx={{ textAlign: "start" }}>
+            Elevating brands through exceptional design.
+          </Typography>
           <Box sx={{ marginTop: "10px" }}>
             <IconButton
               onClick={() => window.open("https://t.me/@disho21", "_blank")}
@@ -68,7 +71,7 @@ const Footer = () => {
         </Grid>
 
         {/* Contact Section */}
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid sx={{ textAlign: "start" }} item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Contact Us
           </Typography>
@@ -82,19 +85,48 @@ const Footer = () => {
           <Typography variant="h6" fontWeight="bold">
             Quick Links
           </Typography>
-          <Typography>Home</Typography>
-          <Typography>About</Typography>
-          <Typography>Works</Typography>
-          <Typography>Skill</Typography>
-          <Typography>Contact</Typography>
+          <Link to="home" smooth={true} duration={500}>
+            <Typography sx={{ cursor: "pointer" }}>Home</Typography>
+          </Link>
+          <Link to="about" smooth={true} duration={500}>
+            <Typography sx={{ cursor: "pointer" }}>About</Typography>
+          </Link>
+          <Link to="projects" smooth={true} duration={500}>
+            <Typography sx={{ cursor: "pointer" }}>Works</Typography>
+          </Link>
+          <Link to="skill" smooth={true} duration={500}>
+            <Typography sx={{ cursor: "pointer" }}>Skills</Typography>
+          </Link>
+          <Link to="contact" smooth={true} duration={500}>
+            <Typography sx={{ cursor: "pointer" }}>Contact</Typography>
+          </Link>
         </Grid>
 
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Follow Us
           </Typography>
-          <Typography>LinkedIn</Typography>
-          <Typography>Telegram</Typography>
+          <Typography sx={{ cursor: "pointer" }}>
+            <a
+              href="https://www.linkedin.com/in/disho-agegnehu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none", color: "inherit" }} // Inherit color and remove underline
+            >
+              LinkedIn
+            </a>
+          </Typography>
+
+          <Typography sx={{ cursor: "pointer" }}>
+            <a
+              href="https://t.me/@disho21"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none", color: "inherit" }} // Inherit color and remove underline
+            >
+              Telegram
+            </a>
+          </Typography>
         </Grid>
       </Grid>
     </Box>
