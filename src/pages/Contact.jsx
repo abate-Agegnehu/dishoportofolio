@@ -7,6 +7,8 @@ import {
   TextField,
   Typography,
   keyframes,
+  Snackbar,
+  SnackbarContent,
 } from "@mui/material";
 import React, { useState } from "react";
 import LockIcon from "@mui/icons-material/Lock";
@@ -15,6 +17,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import emailjs from "emailjs-com";
 
 const slideInOutLeft = keyframes`
   0% {
@@ -41,10 +44,56 @@ const slideInOutRight = keyframes`
 `;
 
 const Contact = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    password: "", // Add password field in formData
+  });
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State to handle password visibility
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_ieyp4s9",
+        "template_9jybj8b",
+        formData,
+        "qA-4-YdbGi9MIp6Dg"
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          setSnackbarMessage("Message sent successfully!");
+          setSnackbarOpen(true);
+          setFormData({ name: "", email: "", message: "", password: "" });
+        },
+        (error) => {
+          console.error("Error sending email:", error.text);
+          setSnackbarMessage("Failed to send message. Please try again.");
+          setSnackbarOpen(true);
+        }
+      );
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
 
   const handleTogglePassword = () => {
-    setShowPassword((prev) => !prev);
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -77,7 +126,10 @@ const Contact = () => {
             {/* Email Field */}
             <TextField
               label="Email"
+              name="email"
               variant="standard"
+              value={formData.email}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -90,8 +142,11 @@ const Contact = () => {
             {/* Password Field */}
             <TextField
               label="Password"
+              name="password"
               type={showPassword ? "text" : "password"}
               variant="standard"
+              value={formData.password}
+              onChange={handleChange}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -115,8 +170,11 @@ const Contact = () => {
             {/* Message Field */}
             <TextField
               label="Message"
+              name="message"
               multiline
               rows={4}
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Type Your Message Here"
               sx={{
                 backgroundColor: "#F8F8F8",
@@ -132,6 +190,9 @@ const Contact = () => {
                   borderColor: "#FF9200",
                   color: "#333",
                 }}
+                onClick={() =>
+                  setFormData({ email: "", password: "", message: "" })
+                }
               >
                 Clear Message
               </Button>
@@ -142,6 +203,7 @@ const Contact = () => {
                   color: "#FFF",
                   ":hover": { backgroundColor: "#e07e00" },
                 }}
+                onClick={handleSubmit}
               >
                 Send Message
               </Button>
@@ -179,12 +241,29 @@ const Contact = () => {
                 <MailOutlineIcon sx={{ color: "#FF9200", fontSize: "28px" }} />
               </IconButton>
               <IconButton>
-                <LinkedInIcon sx={{ color: "#FF9200", fontSize: "28px" }} />
+                <LinkedInIcon
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/in/disho-agegnehu/",
+                      "_blank"
+                    )
+                  }
+                  sx={{ color: "#FF9200", fontSize: "28px" }}
+                />
               </IconButton>
             </Box>
           </Box>
         </Grid>
       </Grid>
+
+      {/* Snackbar for feedback */}
+      <Snackbar
+        open={snackbarOpen}
+        onClose={handleCloseSnackbar}
+        autoHideDuration={4000}
+      >
+        <SnackbarContent message={snackbarMessage} />
+      </Snackbar>
     </Box>
   );
 };

@@ -26,13 +26,26 @@ const Footer = () => {
           <Typography>Elevating brands through exceptional design.</Typography>
           <Box sx={{ marginTop: "10px" }}>
             <IconButton sx={{ color: "#FF9200" }}>
-              <TelegramIcon />
+              <TelegramIcon
+                onClick={() => window.open("https://t.me/disho21", "_blank")}
+                sx={{
+                  cursor: "pointer", // Ensures the icon appears clickable
+                  color: "#0088cc", // Telegram's official color
+                }}
+              />
             </IconButton>
             <IconButton sx={{ color: "#FF9200" }}>
               <MailOutlineIcon />
             </IconButton>
             <IconButton sx={{ color: "#FF9200" }}>
-              <LinkedInIcon />
+              <LinkedInIcon
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/disho-agegnehu/",
+                    "_blank"
+                  )
+                }
+              />
             </IconButton>
           </Box>
           <Typography sx={{ marginTop: "10px", fontSize: "14px" }}>
@@ -46,7 +59,7 @@ const Footer = () => {
             Contact Us
           </Typography>
           <Typography>Email: dishoagnehu@gmail.com</Typography>
-          <Typography>Phone: +2519209937</Typography>
+          <Typography>Phone: +251920993786</Typography>
           <Typography>Address: Addis Ababa, Ethiopia</Typography>
         </Grid>
 
@@ -62,15 +75,12 @@ const Footer = () => {
           <Typography>Contact</Typography>
         </Grid>
 
-        {/* Follow Us Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Follow Us
           </Typography>
-          <Typography>Facebook</Typography>
           <Typography>LinkedIn</Typography>
-          <Typography>Instagram</Typography>
-          <Typography>Twitter(x)</Typography>
+          <Typography>Telegram</Typography>
         </Grid>
       </Grid>
     </Box>
