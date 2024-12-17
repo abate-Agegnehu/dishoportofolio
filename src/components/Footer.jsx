@@ -82,7 +82,7 @@ const Footer = () => {
             Contact Us
           </Typography>
           <Typography>Email: dishoagnehu@gmail.com</Typography>
-          <Typography>Phone: +251920993786</Typography>
+          <Typography sx={{textAlign:"start"}}>Phone: +251920993786</Typography>
           <Typography>Address: Addis Ababa, Ethiopia</Typography>
         </Grid>
 
