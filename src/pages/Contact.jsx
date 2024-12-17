@@ -45,7 +45,7 @@ const Contact = () => {
           fontSize: "56px",
           width: "100%",
           padding: "10px 40px",
-          paddingTop: "100px",
+          
         }}
       >
         Contact

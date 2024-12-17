@@ -159,7 +159,7 @@ const NavBar = () => {
           sx: {
             marginTop: "64px",
             background:
-              "linear-gradient(to left, transparent 0%, rgba(10, 200, 150, 0.6) 100%)",
+              "linear-gradient(to left, transparent 0%, rgba(255, 228, 192, 0.6) 100%);",
             color: "white",
             fontSize: "20px",
             fontWeight: "bold",

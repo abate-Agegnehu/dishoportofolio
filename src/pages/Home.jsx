@@ -47,7 +47,6 @@ const Home = () => {
         justifyContent: "space-between",
         width: "100%",
         paddingTop: "100px",
-
         flexDirection: { xs: "column", md: "row" },
       }}
     >

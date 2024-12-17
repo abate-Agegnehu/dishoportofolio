@@ -37,34 +37,41 @@ const About = () => {
     <Box
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         width: "100%",
-        height: "100vh",
+        height: "100%",
         justifyContent: "space-between",
+        alignItems: "center",
+        padding: { xs: "20px", md: "40px" },
+        xs: "12",
+        md: "4",
       }}
     >
       <Box
         sx={{
-          width: { sx: "100%", md: "50%" },
+          width: { xs: "100%", md: "50%" },
           animation: startAnimation ? `${slideInOutLeft} 1s ease-out` : "none",
+          textAlign: { xs: "center", md: "left" },
+          marginBottom: { xs: "20px", md: "0" },
         }}
       >
         <Typography
           sx={{
             color: "#FF9200",
             fontWeight: 600,
-            fontSize: "56px",
+            fontSize: { xs: "36px", md: "56px" },
             width: "100%",
-            padding: "10px 40px",
+            padding: { xs: "10px 0", md: "10px 40px" },
           }}
         >
           About Me
         </Typography>
         <Typography
           sx={{
-            fontSize: "26px",
+            fontSize: { xs: "18px", md: "26px" },
             color: "#333",
-            padding: "10px 40px",
-            textAlign: "left",
+            padding: { xs: "0 10px", md: "10px 40px" },
+            textAlign: { xs: "center", md: "left" },
           }}
         >
           Hello! I’m Disho Agegnehu, a passionate designer with expertise in
@@ -81,11 +88,23 @@ const About = () => {
       </Box>
       <Box
         sx={{
-          width: { sx: "100%", md: "50%" },
+          width: { xs: "100%", md: "50%" },
           animation: startAnimation ? `${slideInOutRight} 1s ease-out` : "none",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <img src={disho1} alt="Disho Agegnehu" />
+        <img
+          src={disho1}
+          alt="Disho Agegnehu"
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+            height: "auto",
+            borderRadius: "12px",
+          }}
+        />
       </Box>
     </Box>
   );
