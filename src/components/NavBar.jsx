@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -73,7 +73,7 @@ const NavBar = () => {
     setDrawerOpen(open);
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
 
@@ -94,7 +94,7 @@ const NavBar = () => {
     });
 
     setVisibleSections(updatedVisibility);
-  };
+  }, [visibleSections, sections]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -102,7 +102,7 @@ const NavBar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]); 
+  }, [handleScroll]); // Only trigger on handleScroll change
 
   return (
     <div>
