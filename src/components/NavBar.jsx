@@ -102,7 +102,7 @@ const NavBar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [visibleSections]);
+  }, [handleScroll]); 
 
   return (
     <div>
