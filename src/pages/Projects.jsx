@@ -68,25 +68,25 @@ const initialWorks = [
   {
     name: "Website Design",
     description:
-      "Crafting intuitive and visually appealing websites that prioritize user experience and functionality.",
+      " Creating user-friendly, visually captivating websites that emphasize both functionality and user experience.Designing websites that seamlessly blend aesthetics with optimal performance, prioritizing user satisfaction",
     image: webdesign,
   },
   {
     name: "Mobile App Design",
     description:
-      "Developing engaging mobile app interfaces that enhance user interaction.",
+      "Creating engaging mobile app interfaces that captivate users.Focusing on seamless navigation and enhanced interaction for a better experience.Ensuring every touchpoint is intuitive, functional, and enjoyable for the user.",
     image: mobileapp,
   },
   {
     name: "Logo Design",
     description:
-      "Creating impactful and memorable logos that encapsulate brand identity.",
+      "Designing impactful logos that reflect a brand's unique identity.Focusing on simplicity and recognition for lasting impressions.Crafting visuals that communicate the essence and values of the brand.",
     image: logo,
   },
   {
     name: "Thumbnail Design",
     description:
-      "Designing eye-catching thumbnails that drive engagement and clicks.",
+      "Creating visually striking thumbnails that grab attention.Focusing on clarity and creativity to boost engagement.Crafting designs that encourage clicks and enhance user interaction.",
     image: thumbnail,
   },
 ];
