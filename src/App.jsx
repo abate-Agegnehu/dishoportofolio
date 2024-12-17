@@ -1,10 +1,19 @@
-import './App.css';
+import { Box } from "@mui/material";
+import "./App.css";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
-     Lorem ipsum dolor sit amet consectetur adipisicing elit. At sed soluta repellat necessitatibus exercitationem repellendus reprehenderit, nesciunt non aspernatur odio quis accusantium officiis, ipsam quae velit, ipsum atque earum est!
-    </div>
+    <Box
+      sx={{
+        width: "100%",
+      }}
+      className="App"
+    >
+      <NavBar />
+      <Footer />
+    </Box>
   );
 }
 
