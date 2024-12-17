@@ -225,7 +225,7 @@
 // export default Projects;
 
 import React, { useState } from "react";
-import { Box, Grid, Typography, styled, keyframes } from "@mui/material";
+import { Box, Grid, Typography, styled, keyframes, useMediaQuery } from "@mui/material";
 
 import webdesign from "../images/webdesign.png";
 import thumbnail from "../images/uiux.png";
@@ -270,13 +270,18 @@ const zoomIn = keyframes`
   }
 `;
 
-const positions = [
+const largeScreenPositions = [
   { top: "115px", left: "-70px" },
   { top: "-68px", left: "75px" },
   { top: "115px", left: "225px" },
   { top: "330px", left: "90px" },
 ];
-
+const smallScreenPositions = [
+  { top: "-20px", left: "-70px" },
+  { top: "-68px", left: "75px" },
+  { top: "-20px", left: "225px" },
+  { top: "30px", left: "90px" },
+];
 const initialWorks = [
   {
     name: "Website Design",
@@ -332,6 +337,7 @@ const Projects = () => {
     setSelectedWork(works[index]);
     setAnimationKey(animationKey + 1); // Re-trigger animation
   };
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   return (
     <Box
@@ -339,7 +345,7 @@ const Projects = () => {
         width: "100%",
         justifyContent: "center",
         padding: "20px",
-        height:"100vh"
+        height: "100vh",
       }}
     >
       <Typography
@@ -373,7 +379,7 @@ const Projects = () => {
             />
           </AnimatedBox>
         </Grid>
-        <Grid item xs={12} md={3 }>
+        <Grid item xs={12} md={3}>
           <AnimatedBox animation={zoomIn}>
             <Typography
               sx={{
@@ -415,8 +421,12 @@ const Projects = () => {
                   position: "absolute",
                   width: "100px",
                   height: "100px",
-                  top: positions[index].top,
-                  left: positions[index].left,
+                  top: isSmallScreen
+                    ? smallScreenPositions[index].top
+                    : largeScreenPositions[index].top,
+                  left: isSmallScreen
+                    ? smallScreenPositions[index].left
+                    : largeScreenPositions[index].left,
                   cursor: "pointer",
                 }}
                 alt={work.name}
