@@ -94,7 +94,7 @@ const NavBar = () => {
     });
 
     setVisibleSections(updatedVisibility);
-  }, [visibleSections, sections]);
+  }, [setVisibleSections]); 
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
