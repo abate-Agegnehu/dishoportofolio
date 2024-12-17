@@ -17,10 +17,9 @@ const Footer = () => {
         justifyContent="space-between"
         alignItems="flex-start"
       >
+        {/* First Section */}
         <Grid item xs={12} sm={6} md={3}>
-          <Typography variant="h6" fontWeight="bold" sx={{
-            color:"#003308"
-          }}>
+          <Typography variant="h6" fontWeight="bold" sx={{ color: "#003308" }}>
             Disho Agegnehu
           </Typography>
           <Typography>Elevating brands through exceptional design.</Typography>
@@ -40,6 +39,7 @@ const Footer = () => {
           </Typography>
         </Grid>
 
+        {/* Contact Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Contact Us
@@ -49,6 +49,7 @@ const Footer = () => {
           <Typography>Address: Addis Ababa, Ethiopia</Typography>
         </Grid>
 
+        {/* Quick Links Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Quick Links
@@ -60,6 +61,7 @@ const Footer = () => {
           <Typography>Contact</Typography>
         </Grid>
 
+        {/* Follow Us Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Follow Us

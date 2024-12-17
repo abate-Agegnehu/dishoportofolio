@@ -27,6 +27,7 @@ const slideInOutLeft = keyframes`
     transform: translateX(-8%);
   }
 `;
+
 const slideInOutRight = keyframes`
   0% {
     transform: translateX(100%);

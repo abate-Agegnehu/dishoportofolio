@@ -2,6 +2,7 @@ import React from "react";
 import disho1 from "../images/disho1.png";
 import { Box, Typography, keyframes } from "@mui/material";
 
+// Define the animations
 const slideInOutLeft = keyframes`
   0% {
     transform: translateX(-100%);
@@ -13,6 +14,7 @@ const slideInOutLeft = keyframes`
     transform: translateX(-8%);
   }
 `;
+
 const slideInOutRight = keyframes`
   0% {
     transform: translateX(100%);
@@ -24,6 +26,7 @@ const slideInOutRight = keyframes`
     transform: translateX(8%);
   }
 `;
+
 const zoomIn = keyframes`
   0% {
     transform: scale(0.5);
@@ -50,6 +53,7 @@ const Home = () => {
         flexDirection: { xs: "column", md: "row" },
       }}
     >
+      {/* Left Section */}
       <Box
         p={2}
         sx={{
@@ -115,6 +119,8 @@ const Home = () => {
           View My Work
         </Typography>
       </Box>
+
+      {/* Image Section */}
       <Box
         sx={{
           top: "20px",
@@ -134,6 +140,8 @@ const Home = () => {
           }}
         />
       </Box>
+
+      {/* Right Section */}
       <Box
         p={2}
         sx={{

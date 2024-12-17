@@ -43,8 +43,6 @@ const About = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: { xs: "20px", md: "40px" },
-        xs: "12",
-        md: "4",
       }}
     >
       <Box
