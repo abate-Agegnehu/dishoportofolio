@@ -72,7 +72,6 @@ const NavBar = () => {
     }
     setDrawerOpen(open);
   };
-
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -94,7 +93,7 @@ const NavBar = () => {
     });
 
     setVisibleSections(updatedVisibility);
-  }, [setVisibleSections]); 
+  }, [sections, visibleSections]); // Include both 'sections' and 'visibleSections' as dependencies
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
