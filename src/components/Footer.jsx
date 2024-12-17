@@ -5,12 +5,15 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import { Link } from "react-scroll";
 
-
 const Footer = () => {
   return (
     <Box
       sx={{
-        padding: "40px 20px",
+        padding: { xs: "30px 15px", md: "40px 20px" },
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        justifyContent: "space-between",
+        alignItems: "flex-start",
       }}
     >
       <Grid
@@ -18,13 +21,22 @@ const Footer = () => {
         spacing={4}
         justifyContent="space-between"
         alignItems="flex-start"
+        sx={{
+          width: "100%", // Ensures the container width takes full available space
+          flexWrap: "wrap", // Allows grid items to wrap and avoid overflow
+        }}
       >
         {/* First Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold" sx={{ color: "#003308" }}>
             Disho Agegnehu
           </Typography>
-          <Typography sx={{ textAlign: "start" }}>
+          <Typography
+            sx={{
+              textAlign: "start",
+              padding: { xs: "10px 0", md: "10px 0px 10px 70px" },
+            }}
+          >
             Elevating brands through exceptional design.
           </Typography>
           <Box sx={{ marginTop: "10px" }}>
@@ -32,12 +44,7 @@ const Footer = () => {
               onClick={() => window.open("https://t.me/@disho21", "_blank")}
               sx={{ color: "#FF9200" }}
             >
-              <TelegramIcon
-                sx={{
-                  cursor: "pointer",
-                  color: "#FF8200",
-                }}
-              />
+              <TelegramIcon sx={{ cursor: "pointer", color: "#FF8200" }} />
             </IconButton>
             <IconButton
               onClick={() =>
@@ -62,7 +69,6 @@ const Footer = () => {
                   }}
                 />
               </a>
-              ,
             </IconButton>
           </Box>
           <Typography sx={{ marginTop: "10px", fontSize: "14px" }}>
@@ -71,7 +77,7 @@ const Footer = () => {
         </Grid>
 
         {/* Contact Section */}
-        <Grid sx={{ textAlign: "start" }} item xs={12} sm={6} md={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Contact Us
           </Typography>
@@ -102,6 +108,7 @@ const Footer = () => {
           </Link>
         </Grid>
 
+        {/* Follow Us Section */}
         <Grid item xs={12} sm={6} md={3}>
           <Typography variant="h6" fontWeight="bold">
             Follow Us
@@ -111,18 +118,17 @@ const Footer = () => {
               href="https://www.linkedin.com/in/disho-agegnehu/"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: "none", color: "inherit" }} // Inherit color and remove underline
+              style={{ textDecoration: "none", color: "inherit" }}
             >
               LinkedIn
             </a>
           </Typography>
-
           <Typography sx={{ cursor: "pointer" }}>
             <a
               href="https://t.me/@disho21"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: "none", color: "inherit" }} // Inherit color and remove underline
+              style={{ textDecoration: "none", color: "inherit" }}
             >
               Telegram
             </a>
