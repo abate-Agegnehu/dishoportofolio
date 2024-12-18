@@ -37,7 +37,7 @@ const Footer = () => {
               padding: { xs: "10px 0", md: "10px 0px 10px 70px" },
             }}
           >
-            Elevating brands through exceptional design.
+            Crafting impactful UI/UX designs for a seamless user experience
           </Typography>
           <Box sx={{ marginTop: "10px" }}>
             <IconButton
@@ -72,7 +72,7 @@ const Footer = () => {
             </IconButton>
           </Box>
           <Typography sx={{ marginTop: "10px", fontSize: "14px" }}>
-            © 2024 dishoag. All rights reserved.
+            © 2024 Disho Agegnehu. All Rights Reserved.
           </Typography>
         </Grid>
 
@@ -82,7 +82,9 @@ const Footer = () => {
             Contact Us
           </Typography>
           <Typography>Email: dishoagnehu@gmail.com</Typography>
-          <Typography sx={{textAlign:"start"}}>Phone: +251920993786</Typography>
+          <Typography sx={{ textAlign: "start" }}>
+            Phone: +251920993786
+          </Typography>
           <Typography>Address: Addis Ababa, Ethiopia</Typography>
         </Grid>
 

@@ -315,7 +315,6 @@ const Contact = () => {
         </Grid>
       </Grid>
 
-      {/* Snackbar for feedback */}
       <Snackbar
         open={snackbarOpen}
         onClose={handleCloseSnackbar}
