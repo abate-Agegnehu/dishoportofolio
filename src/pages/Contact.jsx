@@ -319,9 +319,15 @@ const Contact = () => {
       <Snackbar
         open={snackbarOpen}
         onClose={handleCloseSnackbar}
-        autoHideDuration={4000}
+        autoHideDuration={1000}
       >
-        <SnackbarContent message={snackbarMessage} />
+        <SnackbarContent
+          message={snackbarMessage}
+          sx={{
+            backgroundColor: "#FF9200",
+            color: "#fff",
+          }}
+        />
       </Snackbar>
     </Box>
   );
